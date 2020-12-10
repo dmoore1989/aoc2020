@@ -1,24 +1,21 @@
 file1 = open('day_8-in.txt', 'r')
-numbers = file1.readlines()
+code = file1.readlines()
+visited_procedures = set()
+acc_sum = 0
+curr_line = 0
 
-def valid_number(number, check_arr):
-    possible_sums = set()
-    for check_num in check_arr:
-        if number/2 == check_num:
-            continue
-        possible_sums.add(number - check_num)
-    for check_num in check_arr:
-        if check_num in possible_sums
-            return True
-    return False          
-
-
-
-check_arr = []
-for number in Numbers
-    if len(check_arr) > 25:
-        check_arr = check_arr[1:]
-        if not valid_number(number, check_arr):
-            print(number)
-            break
-    check_arr.append(number)
+while True:
+    if curr_line in visited_procedures:
+        print(acc_sum)
+        break
+    visited_procedures.add(curr_line)
+    code_line = code[curr_line]
+    if code_line[0:3] == 'acc':
+        acc_sum += int(code_line[4:])
+        curr_line += 1
+    elif code_line[0:3] == 'jmp':
+        curr_line += int(code_line[4:])
+    else:
+        curr_line += 1
+        
+        
